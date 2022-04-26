@@ -1,0 +1,4 @@
+consul_add[*.sh
+vault_add[*.sh
+consul_add_*.sh
+vault_add_*.sh

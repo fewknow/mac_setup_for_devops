@@ -1,0 +1,180 @@
+
+##########
+# PROFILES #
+############
+
+alias bashp="source ~/.bash_profile"
+alias boshp="source ~/.bosh_profile"
+eval $(thefuck --alias)
+source "/usr/local/share/chtf/chtf.sh"
+echo "setting chtf version"
+chtf 0.13.0
+export VAGRANT=true
+
+#########
+# FILES #
+#########
+
+alias bp="cd ~ && vi .bash_profile"
+
+
+###############
+# MAINTENANCE #
+###############
+alias gprune="git remote prune origin"
+alias glist="git branch --merged | grep -v "master" | grep -v "qa" | grep -v "stage" | grep -v "prep" | grep -v "prod" | grep -v "train" | grep -v "sand" | grep -v "develop""
+alias gdel="git branch --merged | grep -v "master" | grep -v "qa" | grep -v "stage" | grep -v "prep" | grep -v "prod" | grep -v "train" | grep -v "sand" | grep -v "develop" | xargs -I {} bash -c 'git branch -d  {}'"
+
+############
+# COMMANDS #
+############
+alias ll="ls -haltr"
+alias ports="netstat -natl | grep LISTEN"
+alias hijack="fly -t keypspring logout && fly -t keyspring login --team-name developer --concourse-url http://concourseci-hijack.mgmt.fewknow.net -u admin1 -p changeme"
+alias flylogin="fly -t keyspring logout && fly -t keyspring login --team-name developer --concourse-url http://concourseci.mgmt.fewknow.net -u admin1 -p changeme"
+alias devopslogin="fly -t keyspring logout && fly -t keyspring login --team-name devops --concourse-url http://concourseci.mgmt.fewknow.net -u admin1 -p changeme"
+
+########################
+# Branch and workspace #
+#######################
+alias develop="git checkout develop && git pull && echo '${red}Switch your terraform workspace if needed${reset}' && terraform workspace list"
+alias sandbox="git checkout sandbox && git pull && echo '${red}Switch your terraform workspace if needed${reset}' && terraform workspace list"
+alias qa="git checkout qa && git pull && echo '${red}Switch your terraform workspace if needed${reset}' && terraform workspace list"
+alias staging="git checkout staging && git pull  && echo '${red}Switch your terraform workspace if needed${reset}' && terraform workspace list"
+alias master="git checkout master && git pull  && echo '${red}Switch your terraform workspace if needed${reset}' && terraform workspace list"
+
+###########################
+# OPEN SOURCE TERRAFORM  #
+##########################
+
+alias tdev="terraform apply -var 'workspace=development'"
+alias tgit="terraform apply -var 'workspace=giterdone'"
+alias tops="terraform apply -var 'workspace=devops'"
+alias tsand="terraform apply -var 'workspace=sand'"
+alias tprep="terraform apply -var 'workspace=preprod'"
+alias tprod="terraform apply -var 'workspace=prod'"
+alias tproddr="terraform apply -var 'workspace=proddr'"
+alias ttrain="terraform apply -var 'workspace=training'"
+alias tqa="terraform apply -var 'workspace=qa'"
+alias tstage="terraform apply -var 'workspace=staging'"
+alias tpdev="terraform plan -var 'workspace=development'"
+alias tpgit="terraform plan -var 'workspace=giterdone'"
+alias tpops="terraform plan -var 'workspace=devops'"
+alias tpsand="terraform plan -var 'workspace=sand'"
+alias tpprep="terraform plan -var 'workspace=preprod'"
+alias tptrain="terraform plan -var 'workspace=training'"
+alias tpqa="terraform plan -var 'workspace=qa'"
+alias tpstage="terraform plan -var 'workspace=staging'"
+alias tpprod="terraform plan -var 'workspace=prod'"
+alias tpproddr="terraform plan -var 'workspace=proddr'"
+alias cdev="terraform apply -var-file=dev.tfvars"
+alias cprep="terraform apply -var-file=prep.tfvars"
+alias cgit="terraform apply -var-file=vars.tfvars"
+alias cdevops="terraform apply -var-file=devops.tfvars"
+alias ctrain="terraform apply -var-file=train.tfvars"
+alias cops="terraform apply -var-file=devops.tfvars"
+alias csand="terraform apply -var-file=sand.tfvars"
+alias cqa="terraform apply -var-file=qa.tfvars"
+alias cstage="terraform apply -var-file=stage.tfvars"
+alias cprod="terraform apply -var-file=prod.tfvars"
+alias cproddr="terraform apply -var-file=proddr.tfvars"
+alias cmgmt="terraform apply -var-file=mgmt.tfvars"
+alias cmgmtdr="terraform apply -var-file=mgmt-dr.tfvars"
+alias tmgmt="terraform apply -var 'workspace=mgmt'"
+alias tmgmtdr="terraform apply -var 'workspace=mgmt-dr'"
+alias tpmgmt="terraform plan -var 'workspace=mgmt'"
+alias tpmgmtdr="terraform plan -var 'workspace=mgmt-dr'"
+alias tl="terraform workspace list"
+alias tldev="terraform workspace select development"
+alias tlqa="terraform workspace select qa"
+alias tlsand="terraform workspace select sand"
+alias tlprep="terraform workspace select preprod"
+alias tlprod="terraform workspace select prod"
+alias tlproddr="terraform workspace select proddr"
+alias tlstaging="terraform workspace select staging"
+alias tltrain="terraform workspace select training"
+alias tlmgmt="terraform workspace select mgmt"
+alias tlmgmtdr="terraform workspace select mgmt-dr"
+alias tinit="terraform init"
+alias ts="terraform show"
+alias ti="terraform init"
+
+##############
+# NAVIGATION #
+#############
+repos_home="~/Documents/repos/"
+hello_home="~/Documents/repos/keyspring.helloworld"
+alias hservice="cd ${hello_home}helloworld.service"
+alias hproxy="cd ${hello_home}helloworld.proxy"
+alias hlib="cd ${hello_home}helloworld.lib"
+alias hlocal="cd ${hello_home}helloworld.local"
+alias hpython="cd ${hello_home}helloworld.api.python"
+alias ans="cd ~/Documents/repos/devops.artifacts/ansible/linux/ubuntu/"
+alias gt="cd ~/Documents/repos/"
+alias hello="cd ~/Documents/helloworld/"
+alias config="cd ${repos_home}devops.config"
+alias ci="cd ${repos_home}devops.ci"
+alias account="cd ${repos_home}devops.infra.account"
+alias api="cd ${repos_home}devops.infra.api_utility"
+alias app="cd ${repos_home}devops.infra.app_iam"
+alias mon="cd ${repos_home}devops.infra.monitoring"
+alias appsc="cd ${repos_home}devops.infra.app_security"
+alias buckets="cd ${repos_home}devops.infra.buckets"
+#alias consul="cd ${repos_home}devops.infra.consul"
+alias data="cd ${repos_home}devops.infra.data"
+alias logstash="cd ${repos_home}devops.infra.logstash"
+alias mgmt="cd ${repos_home}devops.infra.management_account"
+alias mod="cd ${repos_home}devops.infra.modules"
+alias sc="cd ${repos_home}devops.infra.security"
+alias tool="cd ${repos_home}devops.infra.tool_utility"
+alias user="cd ${repos_home}devops.infra.user_iam"
+alias vpc="cd ${repos_home}devops.infra.vpc"
+alias lamb="cd ${repos_home}devops.infra.lambda"
+alias auth="cd ${repos_home}authorizer-lambda"
+alias api="cd ${repos_home}devops.infra.api_gateway"
+alias cog="cd ${repos_home}devops.infra.cognito"
+alias mule="cd ${repos_home}devops.infra.mule"
+alias nex="cd ${repos_home}devops.infra.nexpose"
+alias con="cd ${repos_home}devops.concourseci"
+alias ver="cd ${repos_home}devops.versions"
+alias lamb="cd ${repos_home}devops.infra.lambda"
+alias gtvault="cd ${repos_home}devops.infra.vault"
+alias chrome="open -a \"Google Chrome\""
+
+
+#############
+# KUBE  AWS#
+#############
+alias kubedev="aws eks update-kubeconfig --name dev-keyspring --profile dev --region us-east-1"
+alias kubemgmt="aws eks update-kubeconfig --name mgmt-keyspring --profile mgmt --region us-east-1"
+alias kubeqa="aws eks update-kubeconfig --name qa-keyspring --profile qa --region us-east-1"
+alias kubestage="aws eks update-kubeconfig --name stage-keyspring --profile stage --region us-east-1"
+alias kubesand="aws eks update-kubeconfig --name sand-keyspring --profile sand --region us-east-1"
+alias kubeprod="aws eks update-kubeconfig --name prod-keyspring --profile prod --region us-east-1"
+alias kubeprep="aws eks update-kubeconfig --name prep-keyspring --profile prep --region us-east-1"
+alias kubetrain="aws eks update-kubeconfig --name train-keyspring --profile train --region us-east-1"
+
+
+##########################
+# LOCAL PRECHECK TESTING #
+##########################
+alias setup_precheck_portal="cp *.py ~/Documents/repos/devops.ci/test/portal/"
+alias cleanup_precheck_portal="rm -rf ~/Documents/repos/devops.ci/test/portal/test*.py"
+
+
+#######
+# AWS #
+#######
+alias ecrlogin="aws ecr get-login --no-include-email"
+AWS_ACCESS_KEY="xxx"
+AWS_SECRET_KEY="xxx"
+
+###########
+# PROMPTS #
+###########
+
+export PS1="\u@\h \W \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
