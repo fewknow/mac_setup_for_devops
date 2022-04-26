@@ -10,6 +10,8 @@ source "/usr/local/share/chtf/chtf.sh"
 echo "setting chtf version"
 chtf 0.13.0
 export VAGRANT=true
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"
 
 #########
 # FILES #
@@ -172,6 +174,7 @@ AWS_SECRET_KEY="xxx"
 ###########
 # PROMPTS #
 ###########
+echo "setting prompt for git"
 
 export PS1="\u@\h \W \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 

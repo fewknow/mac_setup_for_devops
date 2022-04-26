@@ -221,5 +221,7 @@ URL=https://github.com/jimeh/git-aware-prompt.git
 if [ ! -d "$FOLDER" ] ; then
     git clone "$URL" "$FOLDER"
 fi
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source "${GITAWAREPROMPT}/main.sh"
+
+echo "${green}Setup complete.  Will now source your bash profile."
+source ~/.bash_profile
+sleep 5
