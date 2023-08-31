@@ -6,9 +6,12 @@
 alias bashp="source ~/.bash_profile"
 alias boshp="source ~/.bosh_profile"
 eval $(thefuck --alias)
-source "/usr/local/share/chtf/chtf.sh"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -f /opt/homebrew/share/chtf/chtf.sh ]]; then
+        source /opt/homebrew/share/chtf/chtf.sh
+fi
 echo "setting chtf version"
-chtf 0.13.0
+chtf 1.0.2
 export VAGRANT=true
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"

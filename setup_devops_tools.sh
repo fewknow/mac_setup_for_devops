@@ -45,7 +45,7 @@ else
   echo "${green}awscli is already installed"
 fi
 
-# brew install thefuck
+brew install thefuck
 
 if ! command -v chtf; then
   echo "${red}need to install chtf"
